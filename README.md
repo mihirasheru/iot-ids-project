@@ -139,7 +139,7 @@ Sensor data was analyzed using the Python-based module to identify anomalies suc
 
 ![Temperature Output](screenshots/python_temperature_output.png)
 ![Humidity Output](screenshots/python_humidity_output.png)
-![Anomaly Detection](screenshots/python_ids_anomaly_detection.png)
+![Anomaly Detection](screenshots/python_ids_anomalyDetection.png)
 
 The system successfully detected all simulated attacks and anomalous behaviours, demonstrating the effectiveness of combining rule-based and behavioural analysis in a lightweight IoT IDS.
 
