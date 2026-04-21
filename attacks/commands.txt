@@ -1,0 +1,53 @@
+If u can't find ip address on ubuntu's enp0s3, 
+	- power off both VMs
+	- go to VM settings in VirtualBox, set it in Expert (near Basic|Expert)
+	- click on Network -> Adapter 1 -> Attched to - Bridged adapter, Name - Intel(R) wireless..., Promiscious mode -> Allow all, enable checkbox for Cable connected
+	-Do the same for Kali VM
+	
+	-In ubuntu enter this command:
+		$ sudo dhclient -v enp0s3
+	-Then enter $ ifconfig
+	
+(check ifconfig for kali, it shd have the same connected network i.e ubuntu is 10.2.41.20 kali shd be 10.2.41.XX), only then kali can attack ubuntu
+
+-------
+
+Compile and check if SNORT rule syntax is correct
+sudo snort -T -c /etc/snort/snort.conf
+
+Start Snort on TARGET (one terminal)
+sudo snort -i enp0s3 -c /etc/snort/snort.conf -A console
+
+------------------------------------------------------------------
+ICMP RULE TESTS (run from Kali)
+
+1. ICMP Echo Request + Reply                           (use ubuntu ip : 10.63.7.47 )
+   ping -c 1 192.168.31.228
+
+2. ICMP Unusual Size
+   ping -s 2000 -c 1 192.168.31.228
+
+3. ICMP Timestamp Request
+   sudo hping3 --icmp --icmptype 13 -c 1 192.168.31.228
+--------------------------------------------------------------------
+TCP SERVICE RULE TESTS (from Kali)
+
+4. SSH Multiple Attempts
+   sudo hping3 -S -p 22 -c 6 192.168.31.228
+
+5. Telnet Detection
+   sudo hping3 -S -p 23 -c 1 192.168.31.228
+
+6. FTP Detection
+   sudo hping3 -S -p 21 -c 1 192.168.31.228
+
+-----------------------------------------------------------------------
+MQTT / IoT RULE TESTS
+
+7. MQTT Traffic
+   sudo hping3 -S -p 1883 -c 1 192.168.31.228
+
+
+
+
+
