@@ -131,7 +131,6 @@ Network attacks were generated from a Kali Linux environment using tools such as
 
 The generated traffic was monitored by Snort IDS. Initial rule validation was performed, followed by real-time detection of malicious activity based on custom rules.
 
-![Snort Test Output](screenshots/snort_test_output.png)
 ![Snort Detection Output](screenshots/snort_detection_output.png)
 
 ### Behavioural Anomaly Detection (Python)
